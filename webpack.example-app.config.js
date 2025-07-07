@@ -16,7 +16,16 @@ prodConfig.output = {
 
 prodConfig.module.rules.push({
   test: /\.css$/,
-  loader: 'style-loader!css-loader?sourceMap',
+  use: [
+    {
+      loader: 'style-loader',
+      options: { esModule: false },
+    },
+    {
+      loader: 'css-loader',
+      options: { sourceMap: true },
+    },
+  ],
 });
 
 prodConfig.plugins = prodConfig.plugins || [];
